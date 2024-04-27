@@ -44,6 +44,7 @@
 		CB84A7842BDCD4940029524B /* holidayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = holidayUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB84A7882BDCD4940029524B /* holidayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holidayUITests.swift; sourceTree = "<group>"; };
 		CB84A78A2BDCD4940029524B /* holidayUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = holidayUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		CB84A7A52BDCFB7D0029524B /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		CB84A7612BDCD4930029524B = {
 			isa = PBXGroup;
 			children = (
+				CB84A7A42BDCFB690029524B /* BuildTools */,
 				CB84A76C2BDCD4930029524B /* holiday */,
 				CB84A77D2BDCD4940029524B /* holidayTests */,
 				CB84A7872BDCD4940029524B /* holidayUITests */,
@@ -127,6 +129,14 @@
 			path = holidayUITests;
 			sourceTree = "<group>";
 		};
+		CB84A7A42BDCFB690029524B /* BuildTools */ = {
+			isa = PBXGroup;
+			children = (
+				CB84A7A52BDCFB7D0029524B /* Package.swift */,
+			);
+			path = BuildTools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,6 +144,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CB84A78E2BDCD4940029524B /* Build configuration list for PBXNativeTarget "holiday" */;
 			buildPhases = (
+				CB84A7A72BDCFBE00029524B /* Run SwiftLint Script */,
 				CB84A7662BDCD4930029524B /* Sources */,
 				CB84A7672BDCD4930029524B /* Frameworks */,
 				CB84A7682BDCD4930029524B /* Resources */,
@@ -252,6 +263,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CB84A7A72BDCFBE00029524B /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\n\n# SDKROOT=$(xcrun --sdk macosx --show-sdk-path )\n# Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\n# swift package update\n \ncp $SRCROOT/.swiftlint.yml ./\nxcrun --sdk macosx swift run -c release swiftlint --fix $SRCROOT/\nrm .swiftlint.yml\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CB84A7662BDCD4930029524B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -332,7 +365,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -395,7 +428,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

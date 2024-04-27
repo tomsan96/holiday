@@ -1,0 +1,7 @@
+included:
+ - ../holiday/
+ - ../holidayTests/
+ - ../holidayUITests/
+
+excluded:
+ - BuildTools/.build
