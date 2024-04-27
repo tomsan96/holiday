@@ -34,15 +34,6 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-### SwiftPackageManager ###
-Packages
-.build/
-BuildTools/.build/
-xcuserdata
-DerivedData/
-*.xcodeproj
-
-
 ### Xcode ###
 ## User settings
 xcuserdata/
@@ -61,3 +52,6 @@ xcuserdata/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swiftpackagemanager,macos
+
+## SwiftPM
+BuildTools/.build/
